@@ -48,7 +48,6 @@ public class Collections {
             System.out.println("(L) --> LinkedList ");
             System.out.println("(A) --> ArrayList ");
             System.out.println("(V) --> Vector ");
-            System.out.println("(S) --> Stack ");
             System.out.println("(C) --> Cancelar ");
             opcion = scanner.next();
             opcion = opcion.toUpperCase();

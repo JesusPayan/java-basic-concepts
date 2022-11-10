@@ -53,14 +53,14 @@ public class VectorExample {
     }
 
     public void reversePersons(Vector<Person> personVector){
-        for(Person person: personVector){
-            System.out.println(person.getNombre());
+        for (int i = personVector.size()-1; i >=0; i--) {
+            System.out.println(personVector.get(i).getNombre());
         }
     }
 
     public void reverseDogs(Vector<Dog> dogVector){
-        for(Dog dog: dogVector){
-            System.out.println(dog.getRace());
+        for (int i = dogVector.size()-1; i >=0; i--) {
+            System.out.println(dogVector.get(i).getRace());
         }
     }
 
@@ -75,4 +75,6 @@ public class VectorExample {
         dogVector.clear();
         System.out.println("Tamaño después:: "+dogVector.size());
     }
+
+
 }
