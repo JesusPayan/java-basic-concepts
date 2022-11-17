@@ -6,7 +6,6 @@ import collections.List.StackExample;
 import collections.List.VectorExample;
 import collections.List.utilities.Dog;
 import collections.List.utilities.Person;
-import com.sun.istack.internal.Nullable;
 
 import java.util.*;
 
@@ -14,6 +13,7 @@ public class Collections {
 
 
     public static void main(String[] args) {
+
         ArrayListExample arrayListExample = new ArrayListExample();
         LinkedListExample linkedListExample = new LinkedListExample();
         VectorExample vectorExample = new VectorExample();
@@ -36,26 +36,15 @@ public class Collections {
         int index_dog;
 
         Dog dog = new Dog();
-        String race = "";
-        String color = "";
-        String size = "";
         Person person = new Person();
-        String name = "";
-        String lastname = "";
-        String gender = "";
 
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
-        boolean flag2 = true;
+        boolean flag2;
 
         //Comienza proceso de menu
         while (flag) {
-            System.out.println("¿Qué clase desea trabajar?");
-            System.out.println("(L) --> LinkedList ");
-            System.out.println("(A) --> ArrayList ");
-            System.out.println("(V) --> Vector ");
-            System.out.println("(S) --> Stack ");
-            System.out.println("(C) --> Cancelar ");
+            mostrarClases();
             opcion = scanner.next();
             opcion = opcion.toUpperCase();
             switch (opcion) {
@@ -73,7 +62,10 @@ public class Collections {
                             //Operaciones
                             switch (operacion) {
                                 case 1: {
-                                    pedirDatos(scanner, dogList, dog, race, size, color, arrayListExample);
+                                    pedirDatos(scanner, dog);
+                                    arrayListExample.addDog(dogList, dog);
+                                    System.out.println("Perro " + dog.getRace() + " ::Añadido!::");
+                                    dog = new Dog();
                                     break;
                                 }
                                 case 2: {
@@ -121,7 +113,10 @@ public class Collections {
                         while (flag2) {
                             switch (operacion) {
                                 case 1: {
-                                    pedirDatos(scanner, personList, person, name, lastname, gender, arrayListExample);
+                                    pedirDatos(scanner, person);
+                                    arrayListExample.addPerson(personList, person);
+                                    System.out.println("" + person.getNombre() + " ::Añadid@!::");
+                                    person = new Person();
                                     break;
                                 }
                                 case 2: {
@@ -174,7 +169,10 @@ public class Collections {
                         while (flag2) {
                             switch (operacion) {
                                 case 1: {
-                                    pedirDatos(scanner, dogLinkedList, dog, race, size, color, linkedListExample);
+                                    pedirDatos(scanner, dog);
+                                    linkedListExample.addDog(dogLinkedList, dog);
+                                    System.out.println("Perro " + dog.getRace() + " ::Añadido!::");
+                                    dog = new Dog();
                                     break;
                                 }
                                 case 2: {
@@ -220,7 +218,10 @@ public class Collections {
                         while (flag2) {
                             switch (operacion) {
                                 case 1: {
-                                    pedirDatos(scanner, personLinkedList, person, name, lastname, gender, linkedListExample);
+                                    pedirDatos(scanner, person);
+                                    linkedListExample.addPerson(personLinkedList, person);
+                                    System.out.println("" + person.getNombre() + " ::Añadid@!::");
+                                    person = new Person();
                                     break;
                                 }
                                 case 2: {
@@ -273,7 +274,10 @@ public class Collections {
                         while (flag2) {
                             switch (operacion) {
                                 case 1: {
-                                    pedirDatos(scanner, dogVector, dog, race, size, color, vectorExample);
+                                    pedirDatos(scanner, dog);
+                                    vectorExample.addDog(dogVector, dog);
+                                    System.out.println("Perro " + dog.getRace() + " ::Añadido!::");
+                                    dog = new Dog();
                                     break;
                                 }
                                 case 2: {
@@ -319,7 +323,10 @@ public class Collections {
                         while (flag2) {
                             switch (operacion) {
                                 case 1: {
-                                    pedirDatos(scanner, personVector, person, name, lastname, gender, vectorExample);
+                                    pedirDatos(scanner, person);
+                                    vectorExample.addPerson(personVector, person);
+                                    System.out.println("" + person.getNombre() + " ::Añadid@!::");
+                                    person = new Person();
                                     break;
                                 }
                                 case 2: {
@@ -359,6 +366,7 @@ public class Collections {
                     break;
                 }
 
+                //Stack
                 case "S": {
                     System.out.println("¿Qué clase desea utilizar? Dog (D) o Person (P)");
                     clase = scanner.next();
@@ -370,7 +378,10 @@ public class Collections {
                         while (flag2) {
                             switch (operacion) {
                                 case 1: {
-                                    pedirDatos(scanner, dogStack, dog, race, size, color, stackExample);
+                                    pedirDatos(scanner, dog);
+                                    stackExample.addDog(dogStack, dog);
+                                    System.out.println("Perro " + dog.getRace() + " ::Añadido!::");
+                                    dog = new Dog();
                                     break;
                                 }
                                 case 2: {
@@ -416,7 +427,10 @@ public class Collections {
                         while (flag2) {
                             switch (operacion) {
                                 case 1: {
-                                    pedirDatos(scanner, personStack, person, name, lastname, gender, stackExample);
+                                    pedirDatos(scanner, person);
+                                    stackExample.addPerson(personStack, person);
+                                    System.out.println("" + person.getNombre() + " ::Añadid@!::");
+                                    person = new Person();
                                     break;
                                 }
                                 case 2: {
@@ -455,6 +469,8 @@ public class Collections {
                     }
                     break;
                 }
+
+                //Cancelar
                 default: {
                     System.out.println("Saliendo del programa...");
                     flag = false;
@@ -463,6 +479,15 @@ public class Collections {
         }
 
 
+    }
+
+    public static void mostrarClases() {
+        System.out.println("¿Qué clase desea trabajar?");
+        System.out.println("(L) --> LinkedList ");
+        System.out.println("(A) --> ArrayList ");
+        System.out.println("(V) --> Vector ");
+        System.out.println("(S) --> Stack ");
+        System.out.println("(C) --> Cancelar ");
     }
 
     public static void mostrarOpciones() {
@@ -475,126 +500,28 @@ public class Collections {
         System.out.println("(6) --> Eliminación total lista ");
     }
 
-
-    public static void pedirDatos(Scanner scanner, ArrayList<Dog> dogList, Dog dog, String race, String size, String color, ArrayListExample arrayListExample) {
+    public static void pedirDatos(Scanner scanner, Dog dog) {
         System.out.println("Ingrese la raza del perro:");
-        race = scanner.next();
+        String race = scanner.next();
         dog.setRace(race);
         System.out.println("Ingrese color del perro:");
-        color = scanner.next();
+        String color = scanner.next();
         dog.setColor(color);
         System.out.println("Ingrese tamaño del perro:");
-        size = scanner.next();
+        String size = scanner.next();
         dog.setSize(size);
-        arrayListExample.addDog(dogList, dog);
-        System.out.println("Perro " + dog.getRace() + " ::Añadido!::");
-        dog = new Dog();
     }
 
-    public static void pedirDatos(Scanner scanner, ArrayList<Person> personList, Person person, String name, String lastname, String gender, ArrayListExample arrayListExample) {
+    public static void pedirDatos(Scanner scanner, Person person) {
         System.out.println("Ingrese el nombre de la persona");
-        name = scanner.next();
+        String name = scanner.next();
         person.setNombre(name);
         System.out.println("Ingrese el apellido de la persona");
-        lastname = scanner.next();
+        String lastname = scanner.next();
         person.setApellido(lastname);
         System.out.println("Ingrese el género de la persona");
-        gender = scanner.next();
+        String gender = scanner.next();
         person.setGenero(gender);
-        arrayListExample.addPerson(personList, person);
-        System.out.println("" + person.getNombre() + " ::Añadid@!::");
-        person = new Person();
-    }
-
-    public static void pedirDatos(Scanner scanner, LinkedList<Dog> dogLinkedList, Dog dog, String race, String size, String color, LinkedListExample linkedListExample) {
-        System.out.println("Ingrese la raza del perro:");
-        race = scanner.next();
-        dog.setRace(race);
-        System.out.println("Ingrese color del perro:");
-        color = scanner.next();
-        dog.setColor(color);
-        System.out.println("Ingrese tamaño del perro:");
-        size = scanner.next();
-        dog.setSize(size);
-        linkedListExample.addDog(dogLinkedList, dog);
-        System.out.println("Perro " + dog.getRace() + " ::Añadido!::");
-        dog = new Dog();
-    }
-
-    public static void pedirDatos(Scanner scanner, LinkedList<Person> personLinkedList, Person person, String name, String lastname, String gender, LinkedListExample linkedListExample) {
-        System.out.println("Ingrese el nombre de la persona");
-        name = scanner.next();
-        person.setNombre(name);
-        System.out.println("Ingrese el apellido de la persona");
-        lastname = scanner.next();
-        person.setApellido(lastname);
-        System.out.println("Ingrese el género de la persona");
-        gender = scanner.next();
-        person.setGenero(gender);
-        linkedListExample.addPerson(personLinkedList, person);
-        System.out.println("" + person.getNombre() + " ::Añadid@!::");
-        person = new Person();
-    }
-
-
-    public static void pedirDatos(Scanner scanner, Vector<Person> personVector, Person person, String name, String lastname, String gender, VectorExample vectorExample) {
-        System.out.println("Ingrese el nombre de la persona");
-        name = scanner.next();
-        person.setNombre(name);
-        System.out.println("Ingrese el apellido de la persona");
-        lastname = scanner.next();
-        person.setApellido(lastname);
-        System.out.println("Ingrese el género de la persona");
-        gender = scanner.next();
-        person.setGenero(gender);
-        vectorExample.addPerson(personVector, person);
-        System.out.println("" + person.getNombre() + " ::Añadid@!::");
-        person = new Person();
-    }
-
-    public static void pedirDatos(Scanner scanner, Vector<Dog> dogVector, Dog dog, String race, String size, String color, VectorExample vectorExample) {
-        System.out.println("Ingrese la raza del perro:");
-        race = scanner.next();
-        dog.setRace(race);
-        System.out.println("Ingrese color del perro:");
-        color = scanner.next();
-        dog.setColor(color);
-        System.out.println("Ingrese tamaño del perro:");
-        size = scanner.next();
-        dog.setSize(size);
-        vectorExample.addDog(dogVector, dog);
-        System.out.println("Perro " + dog.getRace() + " ::Añadido!::");
-        dog = new Dog();
-    }
-
-    public static void pedirDatos(Scanner scanner, Stack<Person> personStack, Person person, String name, String lastname, String gender, StackExample stackExample){
-        System.out.println("Ingrese el nombre de la persona");
-        name = scanner.next();
-        person.setNombre(name);
-        System.out.println("Ingrese el apellido de la persona");
-        lastname = scanner.next();
-        person.setApellido(lastname);
-        System.out.println("Ingrese el género de la persona");
-        gender = scanner.next();
-        person.setGenero(gender);
-        stackExample.addPerson(personStack, person);
-        System.out.println("" + person.getNombre() + " ::Añadid@!::");
-        person = new Person();
-    }
-
-    public static void pedirDatos(Scanner scanner, Stack<Dog> dogStack, Dog dog, String race, String size, String color, StackExample stackExample){
-        System.out.println("Ingrese la raza del perro:");
-        race = scanner.next();
-        dog.setRace(race);
-        System.out.println("Ingrese color del perro:");
-        color = scanner.next();
-        dog.setColor(color);
-        System.out.println("Ingrese tamaño del perro:");
-        size = scanner.next();
-        dog.setSize(size);
-        stackExample.addDog(dogStack, dog);
-        System.out.println("Perro " + dog.getRace() + " ::Añadido!::");
-        dog = new Dog();
     }
 
 }
